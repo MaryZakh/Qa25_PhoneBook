@@ -11,12 +11,15 @@ public class LoginTests extends TestBase {
         //if SignOut is present ---->logout
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
+            logger.info("Before method finish logout");
         }
     }
 
 
     @Test
     public void loginSuccess() {
+        logger.info("Start test with name 'loginSuccess'");
+        logger.info("Test data --->: email: 'mara@gmail.com' & password: 'Mmar123456$'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("mara@gmail.com", "Mmar123456$");
         app.getHelperUser().submitLogin();
@@ -28,11 +31,13 @@ public class LoginTests extends TestBase {
 //        Assert.assertFalse();
 
         Assert.assertTrue(app.getHelperUser().isLogged());
+        logger.info("Assert check is Element button 'Sing out' present");
 
     }
 
     @Test
     public void loginSuccessModel() {
+        logger.info("Test data --->: email: 'mara@gmail.com' & password: 'Mmar123456$'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("mara@gmail.com", "Mmar123456$");
         app.getHelperUser().submitLogin();
@@ -44,32 +49,40 @@ public class LoginTests extends TestBase {
 //        Assert.assertFalse();
 
         Assert.assertTrue(app.getHelperUser().isLogged());
+        logger.info("Assert check is Element button 'Sing out' present");
 
     }
 
     @Test
     public void loginWrongEmail() {
+        logger.info("Test data --->: email: 'maragmail.com' & password: 'Mmar123456$'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("maragmail.com", "Mmar123456$");
         app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+        logger.info("Assert check is alert  present with error text 'Wrong email or password'");
+
     }
 
     @Test
     public void loginWrongPassword() {
+        logger.info("Test data --->: email: 'mara@gmail.com' & password: 'Mmar123'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("mara@gmail.com", "Mmar123");
         app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+        logger.info("Assert check is alert  present with error text 'Wrong email or password'");
 
     }
 
     @Test
     public void loginUnregisteredUser() {
+        logger.info("Test data --->: email: 'luck@gmail.com' & password: 'Lluck123456$'");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm("luck@gmail.com", "Lluck123456$");
         app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+        logger.info("Assert check is alert  present with error text 'Wrong email or password'");
 
     }
 
