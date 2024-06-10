@@ -19,7 +19,7 @@ public class AddNewContactTests extends TestBase {
 
     }
 
-    @Test(dataProvider = "contactSuccess", dataProviderClass = DataProviderContacts.class)
+    @Test(dataProvider = "contactSuccess", dataProviderClass = DataProviderContacts.class,invocationCount = 3)
     public void addContactSuccessAllFields(Contact contact) {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
 
