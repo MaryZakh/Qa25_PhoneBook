@@ -48,7 +48,7 @@ public class AddNewContactTests extends TestBase {
 
 
     }
-
+//for jenkins
     @Test(groups = {"smoke","regress","retest"})
     public void addContactSuccessReqFields() {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
