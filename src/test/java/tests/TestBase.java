@@ -17,7 +17,7 @@ public class TestBase {
 
    static ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
-   @BeforeMethod
+   @BeforeMethod(alwaysRun = true)
    public void startLogger(Method m){
       logger.info("Name of method -->"+m.getName());
    }
@@ -27,7 +27,7 @@ public class TestBase {
       logger.info("********************************************************");
    }
 
-@BeforeSuite
+@BeforeSuite(alwaysRun = true)
    public void setUp(){
         app.init();
    }

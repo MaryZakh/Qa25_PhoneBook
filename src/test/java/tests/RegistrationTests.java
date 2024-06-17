@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
@@ -29,7 +29,7 @@ public class RegistrationTests extends TestBase {
         Assert.assertTrue(app.getHelperUser().isNoContactsHereDisplayed());
     }
 
-    @Test(description = "Bug report #12569, Fixed")
+    @Test(description = "Bug report #12569, Fixed", groups = {"smoke"})
     public void registrationWrongEmail() {
         User user = new User().withEmail("domgmail.com").withPassword("Ddom123456$");
         logger.info("Tests run with data: --->"+user.toString());
